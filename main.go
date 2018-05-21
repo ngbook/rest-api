@@ -5,9 +5,10 @@ import (
 
 	"github.com/ngbook/micro-util/route"
 
-	"ngbook/fruit/rest/handler"
+	"ngbook/fruit/handler"
 
-	web "github.com/micro/go-web"
+	"github.com/micro/go-web"
+	k8s "github.com/micro/kubernetes/go/web"
 )
 
 var (
@@ -20,7 +21,7 @@ func main() {
 
 	// reg := registry.NewRegistry(registry.Addrs(addr))
 	// Create service
-	service := web.NewService(
+	service := k8s.NewService(
 		web.Name(srvName),
 	)
 	// srv := &registry.Service{ Name: "go.micro.srv.auth" }

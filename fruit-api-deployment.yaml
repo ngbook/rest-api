@@ -1,0 +1,38 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: default
+  name: fruit-api
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: fruit-api
+    spec:
+      containers:
+        - name: fruit-api
+          command: [
+            "/fruit-api",
+            "--server_address=0.0.0.0:8080",
+            "--broker_address=0.0.0.0:10001"
+	        ]
+          image: microhq/micro:kubernetes
+          # imagePullPolicy: Always
+          ports:
+          - containerPort: 8080
+            name: api-port
+        - name: health
+          command: [
+		        "/health",
+            "--health_address=0.0.0.0:8081",
+            "--server_name=fruit-api",
+            "--server_address=0.0.0.0:8080"
+          ]
+          image: microhq/health:kubernetes
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8081
+            initialDelaySeconds: 3
+            periodSeconds: 3
