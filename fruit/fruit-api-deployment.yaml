@@ -18,7 +18,7 @@ metadata:
   labels:
     app: fruit-api
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: fruit-api
@@ -32,26 +32,12 @@ spec:
       containers:
         - name: fruit-api
           args: [
-            "/fruit",
+            # "/fruit",
             "--server_address=0.0.0.0:8080",
             "--broker_address=0.0.0.0:10001"
 	        ]
-          image: microhq/micro:kubernetes
+          image: ngbook/fruit-api:k8s
           imagePullPolicy: Always
           ports:
           - containerPort: 8080
             name: api-port
-        - name: health
-          command: [
-		        "/health",
-            "--health_address=0.0.0.0:8081",
-            "--server_name=fruit-api",
-            "--server_address=0.0.0.0:8080"
-          ]
-          image: microhq/health:kubernetes
-          livenessProbe:
-            httpGet:
-              path: /health
-              port: 8081
-            initialDelaySeconds: 3
-            periodSeconds: 3

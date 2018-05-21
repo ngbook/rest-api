@@ -1,4 +1,4 @@
-FROM go-alpine-builder:latest as builder
+FROM jsongo/go-alpine-builder:latest as builder
 RUN go get -u github.com/ngbook/rest-api/fruit
 
 
