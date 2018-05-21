@@ -5,7 +5,7 @@ import (
 
 	"github.com/ngbook/micro-util/route"
 
-	"ngbook/fruit/handler"
+	"github.com/ngbook/rest-api/fruit/handler"
 
 	"github.com/micro/go-web"
 	k8s "github.com/micro/kubernetes/go/web"
