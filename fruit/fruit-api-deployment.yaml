@@ -1,24 +1,43 @@
-apiVersion: extensions/v1beta1
+apiVersion: v1
+kind: Service
+metadata:
+  name: fruit-api
+  labels:
+    app: fruit-api
+spec:
+  ports:
+    - port: 8080
+      name: api
+  selector:
+    app: fruit-api
+---
+apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  namespace: default
   name: fruit-api
+  labels:
+    app: fruit-api
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: fruit-api
   template:
     metadata:
       labels:
         app: fruit-api
     spec:
+      nodeSelector:
+        "cloud.google.com/gke-preemptible": "true"
       containers:
         - name: fruit-api
-          command: [
-            "/fruit-api",
+          args: [
+            "/fruit",
             "--server_address=0.0.0.0:8080",
             "--broker_address=0.0.0.0:10001"
 	        ]
           image: microhq/micro:kubernetes
-          # imagePullPolicy: Always
+          imagePullPolicy: Always
           ports:
           - containerPort: 8080
             name: api-port

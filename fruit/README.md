@@ -3,5 +3,5 @@
 数据从 data.json 里 copy  
 
 # proto  
-退回到 codes 目录下，运行：  
-> docker run --rm -v /Users/jsongo/code/docker/k8s/go-micro/codes:/go/src/ngbook go-alpine-builder go build main.go
+退回到 go-micro 目录下，运行：  
+> ./gen-micro-pb.sh ngbook/fruit/proto/fruit.api.proto  
