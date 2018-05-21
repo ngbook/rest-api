@@ -4,8 +4,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
-	proto "ngbook/proto/fruit"
 	"strconv"
+
+	proto "github.com/ngbook/rest-api/fruit/proto"
 
 	"github.com/ngbook/micro-util/net"
 
