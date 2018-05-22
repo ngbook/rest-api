@@ -29,7 +29,7 @@ func (wx *FruitAPI) GetList(req *restful.Request, rsp *restful.Response) {
 	ip := req.Request.Header.Get("X-Real-IP")
 	fmt.Println(ip)
 	// mongo
-	session, err := mgo.Dial("mongo.techzto.svc.cluster.local")
+	session, err := mgo.Dial("mongodb://mongo.techzto.svc.cluster.local")
 	if err != nil {
 		msg = err.Error()
 	}
