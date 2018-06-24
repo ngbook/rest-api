@@ -7,8 +7,10 @@ package handler
 import (
 	"fmt"
 	"log"
-	"micro/common/net"
-	proto "micro/ngbook/proto/people"
+
+	"github.com/ngbook/micro-util/net"
+
+	proto "github.com/ngbook/rest-api/people/proto"
 
 	"gopkg.in/mgo.v2"
 
