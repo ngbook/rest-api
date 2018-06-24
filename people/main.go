@@ -11,7 +11,8 @@ import (
 
 	"github.com/ngbook/rest-api/people/handler"
 
-	web "github.com/micro/go-web"
+	"github.com/micro/go-web"
+	k8s "github.com/micro/kubernetes/go/web"
 )
 
 var (
@@ -21,7 +22,7 @@ var (
 func main() {
 
 	// Create service
-	service := web.NewService(
+	service := k8s.NewService(
 		web.Name(srvName),
 	)
 
