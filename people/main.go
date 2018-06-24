@@ -7,9 +7,9 @@ package main
 import (
 	"log"
 
-	"micro/common/route"
+	"github.com/ngbook/micro-util/route"
 
-	"micro/ngbook/people/rest/handler"
+	"github.com/ngbook/rest-api/people/handler"
 
 	"github.com/micro/go-micro/registry"
 	web "github.com/micro/go-web"

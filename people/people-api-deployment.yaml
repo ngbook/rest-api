@@ -1,31 +1,31 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: fruit-api
+  name: people-api
   labels:
-    app: fruit-api
+    app: people-api
 spec:
   ports:
     - port: 8080
       name: api
   selector:
-    app: fruit-api
+    app: people-api
 ---
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: fruit-api
+  name: people-api
   labels:
-    app: fruit-api
+    app: people-api
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: fruit-api
+      app: people-api
   template:
     metadata:
       labels:
-        app: fruit-api
+        app: people-api
     spec:
       affinity:
         podAntiAffinity:
@@ -33,16 +33,16 @@ spec:
           - topologyKey: kubernetes.io/hostname
             labelSelector:
               matchLabels:
-                app: fruit-api
+                app: people-api
       nodeSelector:
         "cloud.google.com/gke-preemptible": "true"
       containers:
-        - name: fruit-api
+        - name: people-api
           args: [
             "--server_address=0.0.0.0:8080",
             "--broker_address=0.0.0.0:10001"
 	        ]
-          image: ngbook/fruit-api:k8s
+          image: ngbook/people-api:k8s
           imagePullPolicy: Always
           ports:
           - containerPort: 8080
