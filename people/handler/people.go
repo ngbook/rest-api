@@ -40,7 +40,7 @@ func (wx *PeopleAPI) GetList(req *restful.Request, rsp *restful.Response) {
 		msg = "invalid post data"
 	} else {
 		// mongo
-		session, err := mgo.Dial("localhost")
+		session, err := mgo.Dial("mongodb://mongo.techzto.svc.cluster.local")
 		if err != nil {
 			msg = err.Error()
 		}
