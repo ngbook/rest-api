@@ -11,22 +11,18 @@ import (
 
 	"github.com/ngbook/rest-api/people/handler"
 
-	"github.com/micro/go-micro/registry"
 	web "github.com/micro/go-web"
 )
 
 var (
 	srvName = "net.ngbook.api.people"
-	addr    = "consul.techzto.com:80"
 )
 
 func main() {
 
-	reg := registry.NewRegistry(registry.Addrs(addr))
 	// Create service
 	service := web.NewService(
 		web.Name(srvName),
-		web.Registry(reg),
 	)
 
 	service.Init()
