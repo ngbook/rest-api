@@ -1,5 +1,9 @@
 package main
 
+/**
+ * Author: jsongo<jsongo@qq.com>
+ */
+
 import (
 	"log"
 
@@ -13,30 +17,16 @@ import (
 
 var (
 	srvName = "net.ngbook.api.fruit"
-	// targetServer = "com.jsongo.ngbook.srv.pos"
-	// addr = "consul.techzto.com:80"
 )
 
 func main() {
 
-	// reg := registry.NewRegistry(registry.Addrs(addr))
 	// Create service
 	service := k8s.NewService(
 		web.Name(srvName),
 	)
-	// srv := &registry.Service{ Name: "go.micro.srv.auth" }
-	// service := micro.NewService(
-	// 	micro.Name("go.micro.srv.auth"),
-	// 	micro.Version("latest"),
-	// 	micro.WrapClient(trace.ClientWrapper(t, srv)),
-	// 	micro.WrapHandler(trace.HandlerWrapper(t, srv)),
-	// )
 
 	service.Init()
-
-	// setup Server Client
-	// handler.InitWxClient(
-	// proto.NewWechatClient(targetServer, client.DefaultClient))
 
 	// Create RESTful handler
 	fruitAPI := new(handler.FruitAPI)

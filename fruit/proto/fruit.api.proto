@@ -1,5 +1,9 @@
 syntax = "proto3";
 
+/**
+ * Author: jsongo<jsongo@qq.com>
+ */
+
 service FruitService {
 	rpc GetList(GetListReq) returns (GetListRsp) {} 
 	rpc RspError(GetListReq) returns (CommonRsp) {}
